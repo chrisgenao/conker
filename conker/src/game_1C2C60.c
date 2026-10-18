@@ -1170,7 +1170,9 @@ void func_1519C22C(s32 arg0) {
     func_151617E4(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1C2C60/func_1519C258.s")
+void func_1519C258(s32 arg0) {
+    *(s32 *)(*(s32 *)(*(s32 *)(arg0 + 0x38) + 0x98) + 0x148) = 0;
+}
 
 typedef struct {
     f32 x;
