@@ -5,6 +5,10 @@
 #include "sched.h"
 
 /* defined */
+extern u8 __osContPifRam[];
+extern u8 __osContLastCmd;
+extern s32 D_80042A4C;
+extern u8 __osMaxControllers;
 
 // 0x0002C200
 extern f32 D_8002C200;
@@ -622,6 +626,7 @@ extern f32 D_80099C44;
 
 extern f32 D_80099D44;
 extern f32 D_80099D4C;
+extern f32 D_80099D50;
 extern f32 D_80099DA0;
 extern f32 D_80099DA4;
 extern f32 D_80099DA8;
@@ -640,6 +645,9 @@ extern f32 D_8009A0F4;
 extern f32 D_8009A0F8;
 extern f32 D_8009A0FC;
 extern f32 D_8009A100;
+extern f32 D_8009A108;
+extern f32 D_8009A10C;
+extern f32 D_8009A110;
 // code_75400.c
 extern f32 D_8009A13C; // 1.399999976158142
 extern f32 D_8009A140;
@@ -1178,17 +1186,19 @@ extern u8  D_800D9B8C;
 extern u8  D_800D9BD0[][2][8];
 extern s32 D_800D9E10[];
 extern u8  D_800D9E20;
+extern u8  D_800D9E70[][3];
+extern u8 D_800D9E88[][3];
+extern u8 D_800D9E98[][3];
+extern u8 D_800D9EA8[][3];
+extern u8 D_800D9EB4[][3];
+extern u8 D_800D9EB8[][3];
+extern u8 D_800A2D04[][3];
+extern u8 D_800A2CE8[][3];
+extern u8 D_800A2CEC[][3];
+extern u8  D_800D9EC4[];
+extern u8  D_800D9EB7[];
 
-// extern u16 D_800D9E70[][3];
-// extern u8 D_800D9E88[][3];
-// extern u8 D_800D9E98[][3];
-// extern u8 D_800D9EA8[][3];
-// extern u8 D_800D9EB4[][3];
-// extern u8 D_800D9EB8[][3];
 //
-// extern u8 D_800A2D04[][3];
-// extern u8 D_800A2CE8[][3];
-// extern u8 D_800A2CEC[][3];
 
 extern s32 D_800D9D10[];
 extern u8  D_800D9E64;
@@ -1378,6 +1388,7 @@ extern s32  *D_800E9D10; // probably not struct54
 
 extern s32  D_16001B8C; // a struct
 extern s8   D_160036F3; // control stick Y-axis ?
+extern u8   D_160037F0[]; // 3-byte entries: {char1, char2, index}
 extern s32  D_16003848[];
 extern u8   D_16003888;
 extern u16  D_1600388C;
@@ -1390,8 +1401,18 @@ extern u8   D_16003AF4;
 extern s8   D_16003B1C;
 extern s32  D_16003B20[]; // array containing 0x20 structs?
 extern s8   D_16003B28;
+extern u8   *D_16003B30[];
+extern u8   D_160047A4;
+extern u8   D_160047AC;
+extern u32  D_16003B48;
 extern s32  D_16003B4C;
+extern u32  D_16003B50[]; // powers of 10: {1, 10, 100, ..., 10^9}
+extern u8   D_16003CE0[]; // 8x8 font bitmap, 8 bytes per character
 extern struct118 *D_1600389C; // array or struct?
+extern u8   D_160047E4[]; // "Inf"/"NaN" string
+extern u8   D_160047E8[]; // float format string
+extern u8   D_160047F0[]; // float format string
+extern u8   D_160047F4[]; // float format string
 
 extern u8   D_160046AC[]; // data
 extern u8   D_160046D0[];
@@ -1409,6 +1430,7 @@ extern u8   D_16004738[];
 extern u8   D_16004740[];
 extern u8   D_16004748[];
 extern u8   D_160047B0[];
+extern u8   D_160047B8;
 extern u8   D_160047BC[];
 extern u8   D_160047C0[];
 extern u8   D_160047D0[];
