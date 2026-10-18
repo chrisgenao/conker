@@ -28,4 +28,17 @@
 // -O2/-g/-g1/-g2 = 770, -O3 = 235. A literal-address macro (`*(u32*)0x80091970`) would defeat
 // the CSE but emits `lui/ori` with no relocation -- it does NOT reproduce the golden bytes.
 // BAIL SIGNATURE: score does not move across genuinely different honest spellings.
-#pragma GLOBAL_ASM("asm/nonmatchings/game_21CAC0/func_151EF610.s")
+#include <ultra64.h>
+
+#include "functions.h"
+#include "variables.h"
+
+extern u32 D_80091970;
+
+// Non-matching: game LCG-ish RNG. Semantics exact (multu/srl fix u32), but at -O2 IDO
+// CSEs same-symbol read+write into lui/addiu + lw/sw 0(r), while golden uses the
+// un-CSE'd macro form (lui/lw %lo, lui/at/sw %lo) only -O1 emits -- and -O1 then picks
+// a different temp rotation. Byte-perfect unreachable; logic verified against asm.
+u32 func_151EF610(void) {
+    return D_80091970 = (D_80091970 * 4 + 2) * (D_80091970 * 4 + 3) >> 2;
+}
