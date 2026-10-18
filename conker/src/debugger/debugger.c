@@ -580,7 +580,7 @@ extern s32 D_16003894;
 extern s32 D_16003898;
 extern u8 D_160036F0[];
 // called from func_10007DAC
-// REVERSED: debugger_main(OSThread *thread) â€” main crash debugger entry point and menu loop.
+// REVERSED: debugger_main(OSThread *thread) GÇö main crash debugger entry point and menu loop.
 // Validates framebuffer pointers in D_8002AAE8, invokes func_16003650() to snapshot TLB
 // registers (EntryLo0/1, EntryHi, PageMask), checks whether faulting PC resides in a valid
 // mapped game TLB segment, extracts crash context, and runs the interactive crash menu loop
@@ -756,7 +756,7 @@ format:
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/debugger/debugger/func_16001044.s")
-// REVERSED: draw_number(pos, mode, val) â€” unified number renderer for hex, dec, and float.
+// REVERSED: draw_number(pos, mode, val) GÇö unified number renderer for hex, dec, and float.
 // mode == 0: renders 8-digit hexadecimal formatted text into framebuffer via func_160014F0.
 // mode == 1: signed decimal formatting using powers of 10 struct copy from D_16003B50.
 // mode == 2: single-precision floating-point formatting, delegates to func_16001B34 ("%s%s%f")
