@@ -107,7 +107,51 @@ s32 func_15146890(Struct15147040 *arg0, ActorFields *arg1, s32 arg2, u8 arg3) {
     return func_15046C80(sp2C, 0, arg0->unk4 - 50.0f, arg2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_173D40/func_15146970.s")
+extern s32 func_151420F8(s32);
+extern s32 func_150A2AEC(s32, s32, void *, s32);
+extern u8 D_800A56D0[];
+
+s32 func_15146970(s32 arg0, s32 arg1) {
+    s32 sp1C[5];
+
+    if ((u32)arg0 < 9) {
+        switch (arg0) {
+        case 0:
+            return 0x10;
+        case 1:
+            return 0xF;
+        case 2:
+            return 5;
+        case 3:
+            return 2;
+        case 4:
+            return 0;
+        case 5:
+            if (D_800BE9F0 != 4) {
+                return 1;
+            }
+            if (func_151420F8(arg1) == 0) {
+                return 3;
+            }
+            return 6;
+        case 6:
+            return 4;
+        case 7:
+            return 3;
+        case 8:
+            sp1C[0] = ((s32 *)D_800A56D0)[0];
+            sp1C[1] = ((s32 *)D_800A56D0)[1];
+            sp1C[2] = ((s32 *)D_800A56D0)[2];
+            sp1C[3] = ((s32 *)D_800A56D0)[3];
+            sp1C[4] = ((s32 *)D_800A56D0)[4];
+            if (func_150A2AEC((arg1 - (s32)D_800CC2D0) / 0x32C, 5, sp1C, arg1) == -1) {
+                return -1;
+            }
+            return 6;
+        }
+    }
+    return -1;
+}
 
 void func_15146A98(s32 arg0, s32 arg1, s32 arg2) {
     Struct15147040 sp5C;
