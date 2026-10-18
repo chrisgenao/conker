@@ -4,6 +4,7 @@
 #include "variables.h"
 
 
+<<<<<<< HEAD
 extern u32 osGetCount(void);
 s32 func_160016F4(s32 arg0);
 s32 func_160019A8(s32 direction, void *dramAddr);
@@ -132,6 +133,120 @@ void func_160018BC(void)
     ptr += sizeof(__OSContReadFormat);
   }
   *ptr = 0xFE;
+=======
+// sends controller status command and reads results via SI DMA
+s32 func_16001700(void) {
+    s32 ret;
+
+    if (__osContLastCmd != 1) {
+        func_160018BC();
+        func_160019A8(OS_WRITE, __osContPifRam);
+        {
+            u32 count = osGetCount();
+            u32 deadline = count + 0x30D40;
+            count = osGetCount();
+            while (count < deadline) {
+                func_160016F4(count);
+                count = osGetCount();
+            }
+            func_160016F4(count);
+        }
+    }
+
+    // fill PIF RAM with 0xFF up to __osContLastCmd
+    {
+        u32 *pif = (u32 *)__osContPifRam;
+        u32 *end = (u32 *)&__osContLastCmd;
+        while (pif < end) {
+            *pif++ = 0xFFFFFFFF;
+        }
+    }
+
+    D_80042A4C = 0;
+    ret = func_160019A8(OS_READ, __osContPifRam);
+    __osContLastCmd = 1;
+
+    {
+        u32 count = osGetCount();
+        u32 deadline = count + 0xC3500;
+        count = osGetCount();
+        while (count < deadline) {
+            func_160016F4(count);
+            count = osGetCount();
+        }
+        func_160016F4(count);
+    }
+
+    return ret;
+}
+
+// copies PIF controller data into controller structs
+void func_16001830(void *arg0) {
+    u8 *pif = __osContPifRam;
+    u8 *out = arg0;
+    s32 count = 0;
+    u8 maxc = __osMaxControllers;
+    u8 sp6;
+    u16 sp8;
+    u8 spA;
+    u8 spB;
+
+    if ((s32)maxc > 0) {
+        do {
+            *(u32 *)out = *(u32 *)pif;
+            *(u32 *)(out + 4) = *(u32 *)(pif + 4);
+            if (((s32)(sp6 >> 4) & 0xC) == 0) {
+                out[4] = (s8)(((s32)(sp6 >> 4) & 0xC));
+                *(u16 *)out = sp8;
+                out[2] = spA;
+                out[3] = spB;
+            }
+            count++;
+            pif += 8;
+            out += 6;
+        } while (count < maxc);
+    }
+}
+
+// clears PIF RAM up to __osContLastCmd, then builds controller read command block
+void func_160018BC(void) {
+    u32 *p = (u32 *)(__osContPifRam + 4);
+    u32 *end = (u32 *)&__osContLastCmd;
+    u8 cmd[8];
+    u8 *dst = __osContPifRam;
+    s32 i;
+
+    do {
+        p--;
+        *p = 0;
+        p++;
+    } while (p < end);
+
+    *(u32 *)(__osContPifRam + 0x3C) = 1;
+
+    cmd[0] = 0xFF;
+    cmd[1] = 1;
+    cmd[2] = 4;
+    cmd[3] = 1;
+    cmd[4] = 0xFF;
+    cmd[5] = 0xFF;
+    cmd[6] = 0xFF;
+    cmd[7] = 0xFF;
+
+    if (__osMaxControllers > 0) {
+        u8 *slot = cmd;
+        i = 0;
+        do {
+            u32 w0 = *(u32 *)slot;
+            u32 w1 = *(u32 *)(slot + 4);
+            i++;
+            dst += 8;
+            *(u32 *)(dst - 8) = w0;
+            *(u32 *)(dst - 4) = w1;
+        } while (i < __osMaxControllers);
+    }
+    dst[0] = 0xFE;
+>>>>>>> origin/master
 }
 
 // another __osSiDeviceBusy function

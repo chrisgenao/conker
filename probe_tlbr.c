@@ -1,0 +1,1 @@
+void g(){ asm("tlbr"); }

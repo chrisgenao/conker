@@ -821,7 +821,9 @@ typedef struct {
     u8  pad0[0x14];
     s32 unk14;
     f32 unk18;
-    u8  pad1C[0xfc];
+    u8  pad1C[0xD8];
+    s32 unkF4;
+    u8  padF8[0x20];
     s32 unk118;
     s32 unk11C;
     s32 unk120;

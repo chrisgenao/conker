@@ -839,9 +839,19 @@ void func_16000314(void);
 s32  func_16000384(void);
 void func_16000424(struct118 *arg0);
 void func_16000590(struct118 *arg0);
+void func_160006CC(u32 *arg0);
+void func_1600078C(void);
+s32 func_160014F0(s32 fb, u8 ch);
+void func_16001044(s32 arg0, s32 arg1, u32 arg2);
 void func_160012B0(s32 arg0, u8 *arg1);
+s32  func_1600160C(s32 arg0);
 void func_16001338(u8 arg0, u8 arg1, u8 arg2);
+void func_16001390(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
 s32  func_160016F4(s32 arg0);
+void func_16003650(void);
+s32  func_16001700(void);
+void func_16001830(void *arg0);
+void func_160018BC(void);
 s32  func_16001984();
 s32  func_160019A8(s32 direction, void *dramAddr);
 void func_16001A64(void);
@@ -849,6 +859,8 @@ s32  func_16001A6C(f32 arg0);
 void func_16001AB0(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 u8*  func_16001AD0(u8 *arg0, u8 *arg1, u32 arg2);
 s32  func_16001B8C(u8 *arg0, u8 *arg1, u32 arg2);
+s32  func_16001B34(s32 arg0, void *arg1, void *arg2, void *arg3, f64 arg4);
+s32  func_16001BB4(s32 (*fn)(u8 *arg0, u8 *arg1, u32 arg2), u8 *buf, s32 arg1, s32 *arg2);
 
 
 /* non-matching */

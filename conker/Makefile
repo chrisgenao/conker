@@ -237,7 +237,8 @@ $(BUILD_DIR)/%.c.o: %.c
 	$(CC) -c -32 $(CFLAGS) $(OPT_FLAGS) $(MIPSBIT) -o $@ $<
 
 $(BUILD_DIR)/%.s.o: %.s
-	$(AS) $(ASFLAGS) -o $@ $<
+	@sed -e 's/^nonmatching/#nonmatching/' -e 's/^enddlabel/#enddlabel/' $< > $(BUILD_DIR)/$(notdir $<).s.preprocessed
+	$(AS) $(ASFLAGS) -o $@ $(BUILD_DIR)/$(notdir $<).s.preprocessed
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<
