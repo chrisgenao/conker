@@ -1,4 +1,4 @@
-#include <ultra64.h>
+﻿#include <ultra64.h>
 
 #include "functions.h"
 #include "variables.h"
@@ -190,9 +190,298 @@ struct224 *func_151D2F00(void *arg0, s32 arg1, u8 arg2, struct224 *arg3) {
     
     return tmp;
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1FFF60/func_151D2F90.s")
+void func_151D2F90(struct102 *arg0) {
+    u32 ptr;
+    u8 t8, t9, t0, a1 = 0;
+    u32 v1 = 0;
+    u16 t8_val;
+    u32 t1_val;
 
-extern void (*D_8008FC5C[])(struct102 *);
+    ptr = *(u32 *)(arg0 + 0x10);
+    t8 = *(u8 *)(arg0 + 0x18);
+    a1 = t8 & 0x2;
+
+    if (ptr != 0) {
+        t8 = *(u8 *)(ptr + 4);
+        a1 = ptr & 0x2;
+        if (t8 != 0xFF) {
+            t1_val = *(u32 *)(ptr + 0x1D4);
+        }
+    }
+
+    t9 = *(u8 *)(arg0 + 0x14);
+    t0 = *(u8 *)(ptr + 0x3B);
+
+    if (t9 != t0) {
+        t1_val = *(u32 *)(ptr + 0x1D4);
+    }
+
+    // .L151D2FD4:
+    // Both paths converge here
+    func_1516972C(arg0);
+    goto L_end;
+
+    // .L151D2FE8:
+    // t1_val = *(u32 *)(ptr + 0x1D4);  // already loaded above
+
+    // .L151D301C section:
+    v1 = t8 & 0xFFFD;
+    if (t1_val != 0) {
+        *(u8 *)(arg0 + 0x18) = v1;
+        t8 = *(u8 *)(ptr + 0x74);
+        if ((t8 & 0xF) != 0xF) {
+            *(u8 *)(arg0 + 0x18) = v1;
+        }
+    }
+
+    // .L151D3088:
+    t8 = *(u8 *)(arg0 + 0x18);
+    if ((t8 & 1) != 0) {
+        // t8 already loaded
+        t8_val = *(u16 *)(arg0 + 0x16);
+        // D_800BE9E4 is a function pointer table
+        t1_val = D_800BE9E4[t9 & 0xFFFF];
+        t9_val = t8_val - t1_val;
+        *(u16 *)(arg0 + 0x16) = t9_val;
+        t1_val = *(u16 *)(arg0 + 0x16);
+        if (t1_val < 0) {
+            t8 = *(u8 *)(arg0 + 0x18);
+            // v0 = *(u8 *)(arg0 + 0x1C)
+            if (*(u8 *)(arg0 + 0x1C) != 0xFF) {
+                // D_8008FC58 is a function pointer table
+                switch (*(u8 *)(arg0 + 0x1C)) {
+                case 0:
+                    D_8008FC58[0](arg0);
+                    break;
+                case 1:
+                    D_8008FC58[1](arg0);
+                    break;
+                case 2:
+                    D_8008FC58[2](arg0);
+                    break;
+                case 3:
+                    D_8008FC58[3](arg0);
+                    break;
+                case 4:
+                    D_8008FC58[4](arg0);
+                    break;
+                case 5:
+                    D_8008FC58[5](arg0);
+                    break;
+                case 6:
+                    D_8008FC58[6](arg0);
+                    break;
+                case 7:
+                    D_8008FC58[7](arg0);
+                    break;
+                case 8:
+                    D_8008FC58[8](arg0);
+                    break;
+                case 9:
+                    D_8008FC58[9](arg0);
+                    break;
+                case 10:
+                    D_8008FC58[10](arg0);
+                    break;
+                case 11:
+                    D_8008FC58[11](arg0);
+                    break;
+                case 12:
+                    D_8008FC58[12](arg0);
+                    break;
+                case 13:
+                    D_8008FC58[13](arg0);
+                    break;
+                case 14:
+                    D_8008FC58[14](arg0);
+                    break;
+                case 15:
+                    D_8008FC58[15](arg0);
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
+
+    // .L151D30EC:
+    if ((t8 & 2) != a1) {
+        // v0 = *(u8 *)(arg0 + 0x19)
+        // D_8008FC50 is a function pointer table
+        switch (*(u8 *)(arg0 + 0x19)) {
+        case 0:
+            D_8008FC50[0](arg0);
+            break;
+        case 1:
+            D_8008FC50[1](arg0);
+            break;
+        case 2:
+            D_8008FC50[2](arg0);
+            break;
+        case 3:
+            D_8008FC50[3](arg0);
+            break;
+        case 4:
+            D_8008FC50[4](arg0);
+            break;
+        case 5:
+            D_8008FC50[5](arg0);
+            break;
+        case 6:
+            D_8008FC50[6](arg0);
+            break;
+        case 7:
+            D_8008FC50[7](arg0);
+            break;
+        case 8:
+            D_8008FC50[8](arg0);
+            break;
+        case 9:
+            D_8008FC50[9](arg0);
+            break;
+        case 10:
+            D_8008FC50[10](arg0);
+            break;
+        case 11:
+            D_8008FC50[11](arg0);
+            break;
+        case 12:
+            D_8008FC50[12](arg0);
+            break;
+        case 13:
+            D_8008FC50[13](arg0);
+            break;
+        case 14:
+            D_8008FC50[14](arg0);
+            break;
+        case 15:
+            D_8008FC50[15](arg0);
+            break;
+        default:
+            break;
+        }
+    }
+
+    // .L151D30C8:
+    // t7 = *(u8 *)(arg0 + 0x1B)
+    // D_8008FC54 is a function pointer table
+    switch (*(u8 *)(arg0 + 0x1B)) {
+    case 0:
+        D_8008FC54[0](arg0);
+        break;
+    case 1:
+        D_8008FC54[1](arg0);
+        break;
+    case 2:
+        D_8008FC54[2](arg0);
+        break;
+    case 3:
+        D_8008FC54[3](arg0);
+        break;
+    case 4:
+        D_8008FC54[4](arg0);
+        break;
+    case 5:
+        D_8008FC54[5](arg0);
+        break;
+    case 6:
+        D_8008FC54[6](arg0);
+        break;
+    case 7:
+        D_8008FC54[7](arg0);
+        break;
+    case 8:
+        D_8008FC54[8](arg0);
+        break;
+    case 9:
+        D_8008FC54[9](arg0);
+        break;
+    case 10:
+        D_8008FC54[10](arg0);
+        break;
+    case 11:
+        D_8008FC54[11](arg0);
+        break;
+    case 12:
+        D_8008FC54[12](arg0);
+        break;
+    case 13:
+        D_8008FC54[13](arg0);
+        break;
+    case 14:
+        D_8008FC54[14](arg0);
+        break;
+    case 15:
+        D_8008FC54[15](arg0);
+        break;
+    default:
+        break;
+    }
+
+    // .L151D30E8:
+    // v0 = *(u8 *)(arg0 + 0x19)
+    if (*(u8 *)(arg0 + 0x19) != 0xFF) {
+        // D_8008FC4C is a function pointer table
+        switch (*(u8 *)(arg0 + 0x19)) {
+        case 0:
+            D_8008FC4C[0](arg0);
+            break;
+        case 1:
+            D_8008FC4C[1](arg0);
+            break;
+        case 2:
+            D_8008FC4C[2](arg0);
+            break;
+        case 3:
+            D_8008FC4C[3](arg0);
+            break;
+        case 4:
+            D_8008FC4C[4](arg0);
+            break;
+        case 5:
+            D_8008FC4C[5](arg0);
+            break;
+        case 6:
+            D_8008FC4C[6](arg0);
+            break;
+        case 7:
+            D_8008FC4C[7](arg0);
+            break;
+        case 8:
+            D_8008FC4C[8](arg0);
+            break;
+        case 9:
+            D_8008FC4C[9](arg0);
+            break;
+        case 10:
+            D_8008FC4C[10](arg0);
+            break;
+        case 11:
+            D_8008FC4C[11](arg0);
+            break;
+        case 12:
+            D_8008FC4C[12](arg0);
+            break;
+        case 13:
+            D_8008FC4C[13](arg0);
+            break;
+        case 14:
+            D_8008FC4C[14](arg0);
+            break;
+        case 15:
+            D_8008FC4C[15](arg0);
+            break;
+        default:
+            break;
+        }
+    }
+
+    // .L151D3124:
+L_end:
+    addiu , , 0x18;
+    jr ;
+}extern void (*D_8008FC5C[])(struct102 *);
 extern void func_1514EDF0(struct102 *, void *);
 
 void func_151D3130(struct102 *arg0) {
@@ -321,3 +610,4 @@ void func_151D343C(s32 arg0, u8 arg1) {
     sp1C = *(struct_4b *)D_800AB168;
     func_15169260(&sp1C, 1, arg0, arg1);
 }
+
