@@ -136,9 +136,29 @@ void func_151A8560(void *arg0) {
     func_151D5E30((void *)((u8 *)arg0 + 0x6C));
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1D4E00/func_151A8584.s")
+extern void (*D_8008F94C[])(void *);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1D4E00/func_151A85D4.s")
+void func_151A8584(void *arg0) {
+    void (*cb)(void *) = D_8008F94C[*(u8 *)((char *)arg0 + 0x5C)];
+
+    if (cb != NULL) {
+        cb(arg0);
+    }
+    func_151A8560(arg0);
+    func_15169804((struct102 *)arg0);
+}
+
+extern void (*D_8008F958[])(void *);
+
+void func_151A85D4(void *arg0) {
+    void (*cb)(void *) = D_8008F958[*(u8 *)((char *)arg0 + 0x5C)];
+
+    if (cb != NULL) {
+        cb(arg0);
+    }
+    func_151A8560(arg0);
+    func_15169824((struct102 *)arg0);
+}
 
 typedef struct {
     u8 bytes[4];

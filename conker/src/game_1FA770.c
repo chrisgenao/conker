@@ -513,7 +513,19 @@ s32 func_151D10C4(void *arg0, s32 arg1) {
     return func_151D10E4(arg0, arg1, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1FA770/func_151D10E4.s")
+typedef struct { s32 unk0; s32 unk4; s32 unk8; } StructAAF9C;
+extern StructAAF9C D_800AAF9C[];
+extern void func_15143134(void *, s32, s32);
+
+s32 func_151D10E4(void *arg0, s32 arg1, s32 arg2) {
+    s32 mtx = *(s32 *)((char *)arg0 + 0x1D4);
+
+    if (mtx != 0) {
+        func_15143134(&D_800AAF9C[(u8)arg2], arg1, mtx);
+        return 1;
+    }
+    return 0;
+}
 
 typedef struct {
     struct127 *unk0;
