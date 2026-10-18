@@ -9,6 +9,9 @@ extern f32 func_15143E64(struct17 *);
 extern void (*D_8008FCC0[])(struct102 *);
 void func_1501C010(u8, u8);
 void func_1501C17C(u8);
+extern s32 func_15181CC8(s32);
+extern s32 func_1517EF00(s32);
+extern void *func_15167A68(s32, s32, s32, s32, s32, s32);
 
 typedef struct {
     f32 unk0;
@@ -38,8 +41,68 @@ s32 func_151D87E0(u8 arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_205C90/func_151D8868.s")
+void *func_151D8868(void *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s32 s0;
+    s32 s1;
+    s32 limit;
+    void *ret = NULL;
 
+    if (D_800E0B94 != 0) {
+        return;
+    }
+    if (func_151D87E0(((u8 *)arg0)[5]) != 0) {
+        return;
+    }
+    if (D_800BEAC0 != 0) {
+        return;
+    }
+    if (D_800BEAC1 != 0) {
+        return;
+    }
+    if (D_800BEAC2 != 0) {
+        return;
+    }
+    if (D_800BEAC3 != 0) {
+        return;
+    }
+
+    limit = D_80082FA0;
+    if (limit >= 0) {
+        s1 = 0;
+        s0 = 0;
+        do {
+            if ((((u8 *)arg0)[5] & (1u << (u32)s0)) != 0) {
+                if (func_15181CC8(s0) == 0) {
+                    return ret;
+                }
+                if (func_1517EF00(s0) == 0) {
+                    return ret;
+                }
+            }
+            s1++;
+            s0 = s1 & 0xFF;
+        } while (s0 <= limit);
+    }
+
+    {
+        u8 sp3B = ((u8 *)&arg3)[3];
+
+        ret = func_15167A68(0x3F, arg3, arg2 + 0x18, 1, sp3B, 1);
+        if (ret == NULL) {
+            return ret;
+        }
+        memcpy((u8 *)ret + 0xE, arg0, 8);
+        s0 = 0;
+        do {
+            if ((((u8 *)ret)[0x13] & (1u << ((u32)s0 & 0xFF))) != 0) {
+                func_1501C010((u8)s0, ((u8 *)arg0)[4]);
+            }
+            s0++;
+        } while (((u32)s0 & 0xFF) < 4);
+        ((u8 *)ret)[0x16] = ((u8 *)arg0)[4];
+    }
+    return ret;
+}
 void func_151D8A24(struct102 *arg0) {
     u8 dummy[4];
     s32 temp;

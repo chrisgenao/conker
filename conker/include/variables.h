@@ -916,6 +916,8 @@ extern u8  D_800BEAAA;
 extern u8  D_800BEAAB;
 extern u8  D_800BEAC0;
 extern u8  D_800BEAC1;
+extern u8  D_800BEAC2;
+extern u8  D_800BEAC3;
 
 /* 800C0000 */
 
