@@ -35,7 +35,21 @@ s16 *func_150343B0(s16 *arg0, s32 arg1) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_61490/func_15034420.s")
+extern u8 D_800CC5B4[];
+extern f32 D_80097D18;
+
+s32 *func_15034420(s32 *arg0, s32 arg1) {
+    s32 idx = 811 * arg1;
+    s32 scaled = (s32)((f32)D_800CC5B4[idx] * D_80097D18);
+    s32 q = scaled >> 4;
+
+    arg0[0] = 0;
+    arg0[2] = 0x18;
+    arg0 += 4;
+    arg0[-2] = q;
+    arg0[-1] = scaled - q;
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_61490/func_150344A0.s")
 
