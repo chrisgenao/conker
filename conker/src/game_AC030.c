@@ -152,7 +152,27 @@ void func_1507EFA0(s32 c, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_AC030/func_1507EFD0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_AC030/func_1507F454.s")
+extern u8 *D_80086BA0[];
+
+s32 func_1507F454(void) {
+    struct126 *v1 = D_800D154C->unk31C;
+    u8 flag = v1->pad5A[2];
+    u8 entry;
+    u8 test;
+
+    if (flag == 0) {
+        return 1;
+    }
+    entry = v1->pad5A[3] + 1;
+    v1->pad5A[3] = entry;
+    test = ((u8 *)D_80086BA0[flag])[entry];
+    if (test == 0) {
+        v1->pad5A[2] = 0;
+        v1->pad5A[3] = 0;
+        return 1;
+    }
+    return 0;
+}
 
 s32 func_1507F4C0(s32 arg0) {
     s32 pad;
