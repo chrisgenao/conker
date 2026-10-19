@@ -93,6 +93,35 @@ This project is in its infancy; there are multiple tasks being worked on:
   - Identify and document all asset types used in the ROM
   - Tooling to support the above tasks
 
+## Recent conversions (local sprint)
+
+Landed as C with full-TU verification (compiled with the bundled `mips64-elf-gcc`
+harness flags, plus an `objdump -d` structural check of operations, call
+relocations and store offsets against the target asm):
+
+- `game_188440`: `func_1515B994` — scaled vector update from `D_800BE9A4`
+- `game_19A8B0`: `func_1516F864` — scaled fixed-point interpolation
+- `game_20AE20`: `func_151DD970` — rotating field block copier
+- `game_D7980`: `func_150AA9A0` — 9-float cross-product/dot-product updater (`D_800CC210`..`D_800CC21C`)
+- `game_D7980`: `func_150AA644` — point lerp tested through `func_150AA470`, result masked by `code`
+- `game_135D00`: `func_15108D24` — scale matrix 3x3 by `D_800A2490`, set `mtx[3][1]`, `guMtxF2L` to actor `Mtx`
+- `game_76C90`: `func_150497E0` — Catmull-Rom spline evaluation of 4 floats at `t`
+- `game_142560`: `func_151162D4` — fixed-point angle stepper (`cosf`/`trunc.w.s`/`multu` accumulate)
+
+Supporting fixes:
+
+- `conker/include/types.h`: (re)created with the project `s8`/`u8`/`s16`/`u16`/`s32`/`u32`/`s64`/`u64`/`f32`/`f64` typedefs (the copy on disk was corrupted)
+- `conker/include/variables.h`: removed stray duplicate scalar declarations of `D_160047A4`/`D_160047AC`, which conflicted with the array declarations and blocked compiling every TU that includes the header
+- Reverted an incorrect conversion of `func_151ADA20` (`game_DAE50`): the source documents it as a NON-MATCHING near-miss, so the `GLOBAL_ASM` pragma stays
+
+Conversion guardrails used in this sprint (kept here for the next pass):
+
+- Convert only straight-line `GLOBAL_ASM` functions (no branch instructions, no local labels); larger branchy functions stay as assembly
+- Always read the comments around the pragma first: `game_DAE50`/`game_D5160` carry documented near-miss attempts — leave those pragmas alone
+- Keep existing header declarations/signatures (`functions.h`, `gu.h`); declare file-local helpers with `extern` in the `.c` file when the symbol has no header declaration
+- Note the observed calling convention: float arguments frequently arrive in the integer `a` registers as bit patterns (moved to FP registers with `mtc1` at the use site)
+- Verify each conversion with a full-TU compile using the `compile_one.ps1` flag set, passed as separate `-I` + path array elements (single-token `-Ipath` entries fail under this PowerShell invocation), and spot-check with `-O2` as well
+
 ## Open issues
 
   - Identifying and documenting Conker asset (model/texture/sound) format
