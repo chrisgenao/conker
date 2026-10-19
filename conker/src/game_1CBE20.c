@@ -124,7 +124,22 @@ void func_1519EA78(struct Src1519EA78 *arg0, u16 arg1, f32 arg2, u8 arg3, s32 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_1CBE20/func_1519EB8C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1CBE20/func_1519ED24.s")
+extern f32 D_800A8CD8;
+
+s32 func_1519ED24(f32 *arg0) {
+    f32 scale = D_800A8CD8;
+    f32 *v1 = (f32 *)((u8 *)arg0 + 0x170);
+
+    arg0[6]  = v1[6]  * scale;
+    arg0[7]  = v1[7]  * scale;
+    arg0[8]  = v1[3];
+    arg0[9]  = v1[4];
+    arg0[10] = v1[5];
+    arg0[14] = v1[0];
+    arg0[15] = v1[1];
+    arg0[16] = v1[2];
+    return 1;
+}
 
 typedef struct {
     /* 0x00 */ u8  unk0;
@@ -244,3 +259,5 @@ s32 func_1519EF04(struct Obj1519EF04 *a0) {
     a0->unk3C = v1->unk8;
     return 1;
 }
+
+
