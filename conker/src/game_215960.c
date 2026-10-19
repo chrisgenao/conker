@@ -907,4 +907,6 @@ Gfx *func_151EEBE8(Gfx *gfx, s32 arg1) {
     return gfx;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_215960/func_151EEFF0.s")
+void func_151EEFF0(void) {
+    D_800E9D00 = 0;
+}
