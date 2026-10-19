@@ -573,7 +573,25 @@ void func_1516F548(
         (s32)func_1000EBC4, (void *)arg3, 0, 0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_19A8B0/func_1516F864.s")
+void func_1516F864(s32 arg0) {
+    s32 upper, lower, tmp;
+    s32 prod1_lo, prod2_lo;
+    s32 sum1, sum2;
+
+    upper = (*((s8 *)(arg0 + 0x26)) << 8) + *((u8 *)(arg0 + 0x27));
+    lower = (*((s16 *)(arg0 + 0xE)) << 8) + *((u8 *)(arg0 + 0x2A));
+    tmp = (*((s8 *)(arg0 + 0x28)) << 8) + *((u8 *)(arg0 + 0x29));
+
+    prod1_lo = (s32)(((u32)upper * (u32)D_800BE9E4) & 0xFFFFFFFF);
+    sum1 = lower + prod1_lo;
+    *((s16 *)(arg0 + 0xE)) = (s16)(sum1 >> 8);
+    *((u8 *)(arg0 + 0x2A)) = (u8)sum1;
+
+    prod2_lo = (s32)(((u32)tmp * (u32)D_800BE9E4) & 0xFFFFFFFF);
+    sum2 = (*((s16 *)(arg0 + 0x12)) << 8) + *((u8 *)(arg0 + 0x2B)) + prod2_lo;
+    *((s16 *)(arg0 + 0x12)) = (s16)(sum2 >> 8);
+    *((u8 *)(arg0 + 0x2B)) = (u8)sum2;
+}
 
 void func_1516F8EC(s32 arg0, s32 arg1)
 {
