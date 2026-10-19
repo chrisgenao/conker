@@ -1276,31 +1276,6 @@ void func_1506EEF4(void) {
     D_800D154C->unk287 = 0;
 }
 
-<<<<<<< HEAD
-// PERMUTER CANDIDATE (best 135): all 22 instructions byte-identical and perfectly
-// aligned; the only residual is register naming. The old void reconstruction scored
-// 190 (permuter 2x600s, no zero); declaring the function s32 and returning
-// D_800D1580 >> 16 (v0 is live with exactly that value at jr ra) fixes the a2 base
-// reg, the v1 %hi scratch and v0, and drops it to 135. Remaining: the target keeps
-// the D_800D1580 value in t1 and the scaled index in t6 (andi/sll written in place),
-// where IDO puts them in v1 and a1/t0, which phase-shifts the whole t-register
-// rotation by 5 slots (target starts at t1, IDO at t6). Locals vs inline, named idx,
-// (u8)hi vs hi & 0xFF, and byte-offset vs struct-field store spelling all compile to
-// the identical 135 output, so no C form steers it -- hand this base to the permuter.
-// s32 func_1506EF5C(void) {
-//     s32 temp = D_800D1580;
-//     s32 hi = temp >> 16;
-//     s32 idx = (hi & 0xFF) * 2;
-//
-//     *(u16 *)&D_800D154C->unk282 = 0xFFFF;
-//     D_800D154C->unk276 = 5;
-//     *((u8 *)D_800D154C + idx + 0x284) = temp >> 8;
-//     *((u8 *)D_800D154C + idx + 0x285) = temp;
-//     return hi;
-// }
-#pragma GLOBAL_ASM("asm/nonmatchings/game_981E0/func_1506EF5C.s")
-=======
-// TBD whats goins on here
 void func_1506EF5C(void) {
     u8 idx = (u8)(D_800D1580 >> 16);
     u8 *base = (u8 *)D_800D154C + (idx << 1);
@@ -1309,7 +1284,6 @@ void func_1506EF5C(void) {
     base[0x284] = (u8)(D_800D1580 >> 8);
     base[0x285] = (u8)D_800D1580;
 }
->>>>>>> origin/master
 
 void func_1506EFB4(void) {
     D_800D154C->unk282 = (u16)0;
