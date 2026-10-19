@@ -37,6 +37,7 @@ s16 *func_150343B0(s16 *arg0, s32 arg1) {
 
 extern u8 D_800CC5B4[];
 extern f32 D_80097D18;
+extern f32 D_80097D1C;
 
 s32 *func_15034420(s32 *arg0, s32 arg1) {
     s32 idx = 811 * arg1;
@@ -51,7 +52,18 @@ s32 *func_15034420(s32 *arg0, s32 arg1) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_61490/func_150344A0.s")
+void func_150344A0(s16 *arg0, s32 arg1) {
+    struct127 *obj = &D_800CC2D0[arg1];
+    f32 scale = D_80097D1C;
+    s32 v = obj->unk2E4;
+    s16 lo = (s16)((u32)v & 0xFFFF);   // lh at +0x2E6 (low half)
+    s16 hi = (s16)((u32)v >> 16);      // lh at +0x2E4 (high half)
+
+    arg0[0] = 18;
+    arg0[1] = (s16)((f32)lo * scale);
+    arg0[2] = 14;
+    arg0[3] = (s16)(-(f32)hi * scale);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_61490/func_1503453C.s")
 
