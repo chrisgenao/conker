@@ -106,7 +106,20 @@ void func_1507EE58(s32 arg0, void *arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_AC030/func_1507EEB8.s")
+void func_1507EEB8(s32 arg0, void *arg1) {
+    u8 *dst = (u8 *)arg1;
+    u8 b0 = (u8)arg0 & 0xFF;
+    u8 b1 = dst[0];
+    u8 b2 = dst[1];
+    u8 b3 = dst[2];
+    u8 b4 = dst[3];
+
+    dst[1] = b0;
+    dst[2] = b1;
+    dst[3] = b2;
+    dst[4] = b3;
+    dst[0] = b4;
+}
 
 void func_1507EEF4(void) {
     u8 *state;
