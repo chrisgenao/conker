@@ -238,7 +238,16 @@ void func_15115EDC(struct S_15115EDC *arg0, struct A_15115EDC *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_142560/func_1511617C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_142560/func_151162D4.s")
+void func_151162D4(void *arg0) {
+    f32 f12 = (f32)*(s16 *)((u8 *)arg0 + 0x12);
+    s16 sp1E = (s16)(f12 + *(f32 *)((u8 *)arg0 + 0x18));
+    s32 packed = *(s32 *)((u8 *)arg0 + 0x3C);
+    f32 f = (f32)*(s16 *)((u8 *)arg0 + 0x3E);
+    f32 acc = cosf(*(f32 *)((u8 *)arg0 + 0x7C) * 0.0054931640625f) * f;
+    *(f32 *)((u8 *)arg0 + 0x18) = acc;
+    *(s32 *)((u8 *)arg0 + 0x7C) += (u32)((u16)(packed >> 16) & 0xFFFF) * (u32)D_800BE9E4;
+    *(s16 *)((u8 *)arg0 + 0x5C) = (s16)(f12 + acc - (f32)sp1E);
+}
 
 void func_151163C0(struct Obj151163C0 *arg0) {
     volatile f32 sp2C;
