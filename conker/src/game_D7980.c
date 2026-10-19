@@ -7,7 +7,15 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_D7980/func_150AA5A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_D7980/func_150AA644.s")
+extern s32 func_150AA470(f32, f32, f32, f32, f32, f32);
+
+s32 func_150AA644(f32 x, f32 y, f32 z, f32 x0, f32 y0, f32 z0, f32 x1, f32 y1, f32 z1, f32 t, s32 code) {
+    f32 lx = (x0 - x1) * t + x1;
+    f32 ly = (y0 - y1) * t + y1;
+    f32 lz = (z0 - z1) * t + z1;
+
+    return func_150AA470(x, y, z, lx, ly, lz) & code;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_D7980/func_150AA678.s")
 
