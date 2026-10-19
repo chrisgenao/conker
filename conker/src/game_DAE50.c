@@ -103,17 +103,7 @@
 //       D_800885B0 = t;
 //       return t;
 //   }
-u8 func_150ADA20(void) {
-    u32 t = (u32)D_800885B0;
-    u32 a2 = ((s32)(t << 31) >> 31) | (t << 31);
-    u32 a0 = t << 12;
-    a2 = a2 ^ a0;
-    a0 = (a2 >> 20) & 0xFFF;
-    a0 = a0 ^ a2;
-    D_800885B0 = a0;
-    u32 v0 = a0 & 0xFFFF;
-    return (u8)((f32)v0 * D_8009F6C0);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/game_DAE50/func_150ADA20.s")
 // s32 func_150ADA20() {
 //     // u32 tmp1;
 //     u64 tmp2;
