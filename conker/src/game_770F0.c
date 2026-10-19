@@ -3,7 +3,7 @@
 #include "variables.h"
 
 
-void func_15049C40(f32 *arg0, f32 *arg1) {
+f32 func_15049C40(f32 *arg0, f32 *arg1) {
     f32 dot = arg0[0]*arg1[0] + arg0[1]*arg1[1] + arg0[2]*arg1[2] + arg1[3]*arg0[3];
 
     if (dot < 0.0f) {
