@@ -16,6 +16,7 @@ extern f32 D_800A2480;
 extern f32 D_800A2484;
 extern f32 D_800A2488;
 extern f32 D_800A248C;
+extern f32 D_800A2490;
 f32 sinf(f32);
 f32 func_15144B68(f32);
 struct Arg0_15108AB4;
@@ -119,7 +120,24 @@ s32 func_15108C38(struct Arg0_15108AB4 *arg0) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_135D00/func_15108D24.s")
+s32 func_15108D24(struct Arg0_15108AB4 *arg0, s32 arg1) {
+    struct F8StateData *v0 = (struct F8StateData *)((((u8 *)arg0) + arg0->off) + 0xF8);
+    f32 mtx[4][4];
+
+    func_150A8050(mtx, v0->field_0x0, 0.0f, v0->field_0x4);
+    mtx[0][0] *= D_800A2490;
+    mtx[0][1] *= D_800A2490;
+    mtx[0][2] *= D_800A2490;
+    mtx[1][0] *= D_800A2490;
+    mtx[1][1] *= D_800A2490;
+    mtx[1][2] *= D_800A2490;
+    mtx[2][0] *= D_800A2490;
+    mtx[2][1] *= D_800A2490;
+    mtx[2][2] *= D_800A2490;
+    mtx[3][1] = v0->field_0x10;
+    guMtxF2L(mtx, (Mtx *)((u8 *)arg0 + (D_800BE9C0 << 6) + 0x78));
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_135D00/func_15108E10.s")
 
