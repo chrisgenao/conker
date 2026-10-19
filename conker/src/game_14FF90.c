@@ -717,7 +717,25 @@ void func_15125608(struct108 *arg0) {
 //     if (D_800DBFF6 != 0) D_800DBFF6--;
 //     if ((&D_800DBFF6)[1] != 0) (&D_800DBFF6)[1]--;
 // }
-#pragma GLOBAL_ASM("asm/nonmatchings/game_14FF90/func_15125628.s")
+extern u8 D_800DBFF4;
+extern u8 D_800DBFF5;
+extern u8 D_800DBFF6;
+extern u8 D_800DBFF7;
+
+void func_15125628(void) {
+    if (D_800DBFF4 != 0) {
+        D_800DBFF4 -= 1;
+    }
+    if (D_800DBFF5 != 0) {
+        D_800DBFF5 -= 1;
+    }
+    if (D_800DBFF6 != 0) {
+        D_800DBFF6 -= 1;
+    }
+    if (D_800DBFF7 != 0) {
+        D_800DBFF7 -= 1;
+    }
+}
 
 void func_15125690(struct108 *arg0, s32 arg1) {
     u8 *temp_v0 = &D_800DBFF4[arg0->unk23D];
