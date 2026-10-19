@@ -1407,8 +1407,6 @@ extern s8   D_16003B1C;
 extern s32  D_16003B20[]; // array containing 0x20 structs?
 extern s8   D_16003B28;
 extern u8  *D_16003B30[];
-extern u8   D_160047A4;
-extern u8   D_160047AC;
 extern u32  D_16003B48;
 extern s32  D_16003B4C;
 extern u32  D_16003B50[]; // powers of 10: {1, 10, 100, ..., 10^9}
