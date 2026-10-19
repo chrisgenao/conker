@@ -91,7 +91,32 @@ extern s8 D_800E0B99;
 extern s8 D_800E0BB1;
 extern u8 D_800E0BD1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_20AE20/func_151DD970.s")
+extern s8 D_8008FE54;
+extern s8 D_8008FE55;
+extern s8 D_8008FE56;
+extern s8 D_8008FE57;
+extern s8 D_8008FE6B;
+extern u8 D_800E0BE0;
+extern u8 D_800E0BE1;
+extern u8 D_800E0BE2;
+extern u8 *D_800E0BE3;
+
+void func_151DD970(void) {
+    s8 *src = &D_8008FE57;
+    u8 *dst = D_800E0BE3;
+
+    D_800E0BE2 = D_8008FE56;
+    D_800E0BE1 = D_8008FE55;
+    D_800E0BE0 = D_8008FE54;
+    do {
+        dst[-3] = src[1];
+        dst[-2] = src[2];
+        dst[-1] = src[3];
+        dst[-4] = src[0];
+        src += 4;
+        dst += 4;
+    } while (src != &D_8008FE6B);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_20AE20/func_151DD9E4.s")
 
