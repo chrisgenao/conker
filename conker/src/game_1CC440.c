@@ -332,9 +332,61 @@ void func_151A0AF8(struct Obj151A0AF8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_1CC440/func_151A0C0C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1CC440/func_151A0E40.s")
+extern f32 D_800A8D20;
+extern f32 D_800A8D24;
+void func_151A11CC(f32, f32, s32, s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_1CC440/func_151A0F28.s")
+void func_151A0E40(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    volatile s32 glyph_lo[9];
+    volatile s32 glyph_hi[9];
+    volatile f32 row[3];
+    union { s32 i; f32 f; } f0bits;
+    union { s32 i; f32 f; } f1bits;
+
+    glyph_lo[0] = 0xA0; glyph_hi[0] = 1;
+    glyph_lo[1] = 0x4B; glyph_hi[1] = 0x46;
+    glyph_lo[2] = 0x41F; glyph_hi[2] = 0x42;
+    glyph_lo[3] = 0x4F6; glyph_hi[3] = 0x41F;
+    glyph_lo[4] = 1; glyph_hi[4] = 0x4F6;
+    glyph_lo[5] = 0x87; glyph_hi[5] = 7;
+    glyph_lo[6] = 0x44; glyph_hi[6] = 0x41;
+    glyph_lo[7] = 0x41F; glyph_hi[7] = 4;
+    glyph_lo[8] = 0x4F6; glyph_hi[8] = 1;
+    row[0] = D_800A8D20;
+    row[1] = D_800A8D20;
+    row[2] = D_800A8D20;
+    f0bits.i = arg3 & 0xFF;
+    f1bits.i = arg1;
+    func_151A11CC(f0bits.f, f1bits.f, arg2, 0x43230000);
+    (void)arg0;
+    (void)arg4;
+}
+
+void func_151A0F28(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    volatile s32 glyph_lo[9];
+    volatile s32 glyph_hi[9];
+    volatile f32 row[3];
+    union { s32 i; f32 f; } f0bits;
+    union { s32 i; f32 f; } f1bits;
+
+    glyph_lo[0] = 0xA0; glyph_hi[0] = 1;
+    glyph_lo[1] = 0x4B; glyph_hi[1] = 0x46;
+    glyph_lo[2] = 0x41F; glyph_hi[2] = 0x42;
+    glyph_lo[3] = 0x4F6; glyph_hi[3] = 0x41F;
+    glyph_lo[4] = 1; glyph_hi[4] = 0x4F6;
+    glyph_lo[5] = 0x87; glyph_hi[5] = 7;
+    glyph_lo[6] = 0x44; glyph_hi[6] = 0x41;
+    glyph_lo[7] = 0x41F; glyph_hi[7] = 4;
+    glyph_lo[8] = 0x4F6; glyph_hi[8] = 1;
+    row[0] = D_800A8D24;
+    row[1] = D_800A8D24;
+    row[2] = D_800A8D24;
+    f0bits.i = arg3 & 0xFF;
+    f1bits.i = arg1;
+    func_151A11CC(f0bits.f, f1bits.f, arg2, 0x43230000);
+    (void)arg0;
+    (void)arg4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_1CC440/func_151A1010.s")
 
