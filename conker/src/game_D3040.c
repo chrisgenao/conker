@@ -11,7 +11,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_D3040/func_150A6210.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/game_D3040/func_150A6354.s")
+void func_150A6354(void) {
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/game_D3040/func_150A6360.s")
 
