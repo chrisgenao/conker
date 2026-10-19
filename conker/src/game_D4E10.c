@@ -12,7 +12,11 @@
 // sibling of the same shape func_150442C0 (game_71770.c, a leaf taking ptr+3 floats) which also homes
 // one arg. Best hand form (scored 2585):
 //   *outX = (m[1][0]*y + m[0][0]*x) + (m[3][0] + m[2][0]*z);   (rows 1,2 analogous for cols 1,2)
-#pragma GLOBAL_ASM("asm/nonmatchings/game_D4E10/func_150A7960.s")
+void func_150A7960(f32 *m, f32 x, f32 y, f32 z, f32 *ox, f32 *oy, f32 *oz) {
+    *ox = m[0] * x + m[4] * y + m[8] * z + m[12];
+    *oy = m[1] * x + m[5] * y + m[9] * z + m[13];
+    *oz = m[2] * x + m[6] * y + m[10] * z + m[14];
+}
 
 // func_150A7A00: HAND-WRITTEN trampoline. Saves $ra into $t9, sets $ra = &func_150A7A14, then
 // `j func_150A7960` (not jal). No C construct sets ra to another function before a jump. Unmatchable.
